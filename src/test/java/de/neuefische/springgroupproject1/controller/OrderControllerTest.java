@@ -40,10 +40,9 @@ class OrderControllerTest {
     @Test
     public void putOrdersShouldAddOrderDatabase(){
         //GIVEN
-        ArrayList<String> productId = new ArrayList<>();
-        HttpEntity<Order> requestEntity = new HttpEntity<>(new Order("1",productId));
+        HttpEntity<Order> requestEntity = new HttpEntity<>(new Order("1","Liste"));
 
-        //WHEN##
+        //WHEN
         ResponseEntity<Order> postResponse = restTemplate.exchange("http//localhost" + port + "/orders", HttpMethod.PUT, requestEntity, Order.class);
 
         //THEN
@@ -55,8 +54,8 @@ class OrderControllerTest {
     @Test
     public void getOrdersShouldReturnAllOrders(){
         //GIVEN
-        orderDB.add(new Order("1","Affe"));
-        orderDB.add(new Order("7","Katze"));
+        orderDB.add(new Order("1","Liste ?"));
+        orderDB.add(new Order("7","Liste ?"));
 
         //WHEN
         ResponseEntity<Order[]> postResponse = restTemplate.postForEntity("http://localhost:" + port + "/orders", new Order("3","Affe"));
